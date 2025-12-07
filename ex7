@@ -1,0 +1,43 @@
+# Exercise 1: Find Common Elements in Two Lists
+def common_elements(a, b):
+    set_a = set(a)
+    set_b = set(b)
+    common = set_a.intersection(set_b)
+    result = list(common)
+    return result
+
+# Example
+a = [1, 2, 3, 4]
+b = [3, 4, 5, 6]
+print(common_elements(a, b))
+
+
+# Exercise 2: Remove Duplicates While Preserving Order
+def remove_duplicates(seq):
+    seen = set()
+    result = []
+    
+    for item in seq:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    
+    return result
+
+# Example
+nums = [1, 2, 2, 3, 4, 3, 5]
+print(remove_duplicates(nums))
+
+
+# Exercise 3: Check if Two Sets are Disjoint (No Common Elements)
+def are_disjoint(set1, set2):
+    result = set1.isdisjoint(set2)
+    return result
+
+# Example
+a = {1, 2, 3}
+b = {4, 5, 6}
+print(are_disjoint(a, b))
+
+c = {3, 4}
+print(are_disjoint(a, c))
