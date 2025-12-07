@@ -1,0 +1,108 @@
+# Exercise 1: Magic 8-ball
+import random
+
+answers = ["It is certain", "It is decidedly so", "Without a doubt", 
+           "Yes, definitely", "You may rely on it", "As I see it, yes", 
+           "Most likely", "Outlook good", "Yes", "Signs point to yes",
+           "Reply hazy try again", "Ask again later", "Better not tell you now", 
+           "Cannot predict now", "Concentrate and ask again", "Don't count on it", 
+           "My reply is no", "My sources say no", "Outlook not so good", 
+           "Very doubtful"]
+
+question = input("Ask a question: ")
+random_answer = random.choice(answers)
+print(random_answer)
+
+
+# Exercise 2: FIFO (Queue)
+queue = []
+
+while True:
+    user_input = input("Enter something (or press Enter to quit, ? to pop): ")
+    
+    if user_input == "":
+        break
+    elif user_input == "?":
+        if len(queue) > 0:
+            first_element = queue.pop(0)
+            print(first_element)
+        else:
+            print("Queue is empty!")
+    else:
+        queue.append(user_input)
+
+
+# Exercise 3: Fibonacci sequence
+def fibonacci(n):
+    a = 0
+    b = 1
+    
+    for i in range(n):
+        print(a, end=" ")
+        temp = a + b
+        a = b
+        b = temp
+
+# Test the function
+fibonacci(10)
+print()
+
+
+# Exercise 4: Counting Letters
+def counting_number(char, string):
+    count = 0
+    for letter in string:
+        if letter == char:
+            count = count + 1
+    return count
+
+# Test the function
+result = counting_number("a", "banan")
+print(result)
+
+# Replace duplicated characters with empty string
+def remove_duplicates(string):
+    result = ""
+    for char in string:
+        if char not in result:
+            result = result + char
+    return result
+
+# Test the function
+cleaned = remove_duplicates("banan")
+print(cleaned)
+
+
+# Exercise 5: Palindrome
+def is_palindrome(string):
+    reversed_string = ""
+    
+    for char in string:
+        reversed_string = char + reversed_string
+    
+    if string == reversed_string:
+        return "Yes"
+    else:
+        return "No"
+
+# Test the function
+print(is_palindrome("malayalam"))
+print(is_palindrome("geeks"))
+
+
+# Exercise 6: Largest number
+def find_largest(numbers):
+    largest = numbers[0]
+    
+    for number in numbers:
+        if number > largest:
+            largest = number
+    
+    return largest
+
+# Test the function
+list1 = [10, 20, 4]
+print(find_largest(list1))
+
+list2 = [20, 10, 20, 4, 100]
+print(find_largest(list2))
