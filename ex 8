@@ -1,0 +1,187 @@
+# Exercise 1: Rectangles Measurement
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+class Rectangle:
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        
+        # Make sure width and height are positive
+        if width > 0:
+            self.width = width
+        else:
+            self.width = 1
+            
+        if height > 0:
+            self.height = height
+        else:
+            self.height = 1
+    
+    def area(self):
+        return self.width * self.height
+    
+    def circumference(self):
+        return 2 * (self.width + self.height)
+    
+    def bottom_right(self):
+        bottom_right_x = self.x + self.width
+        bottom_right_y = self.y + self.height
+        return Point(bottom_right_x, bottom_right_y)
+    
+    def overlap(self, other):
+        # Find overlapping area
+        left = max(self.x, other.x)
+        right = min(self.x + self.width, other.x + other.width)
+        top = max(self.y, other.y)
+        bottom = min(self.y + self.height, other.y + other.height)
+        
+        # Check if there is overlap
+        if right > left and bottom > top:
+            overlap_width = right - left
+            overlap_height = bottom - top
+            return Rectangle(left, top, overlap_width, overlap_height)
+        else:
+            return Rectangle(0, 0, 0, 0)
+
+# Test
+rect1 = Rectangle(0, 0, 10, 10)
+print("Area:", rect1.area())
+print("Circumference:", rect1.circumference())
+point = rect1.bottom_right()
+print("Bottom right:", point.x, point.y)
+
+rect2 = Rectangle(5, 5, 10, 10)
+overlap_rect = rect1.overlap(rect2)
+print("Overlap area:", overlap_rect.area())
+
+
+# Exercise 2: Enrolled Students
+class Student:
+    def __init__(self, first_name, last_name, year_of_birth, admin_number):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.year_of_birth = year_of_birth
+        self.admin_number = admin_number
+        self.courses = []
+    
+    def enroll(self, course):
+        self.courses.append(course)
+    
+    def get_age(self):
+        current_year = 2025
+        age = current_year - self.year_of_birth
+        return age
+    
+    def display(self):
+        print("Number:", self.admin_number)
+        print("Name:", self.first_name, self.last_name)
+        print("Age:", self.get_age())
+        print("Courses:")
+        for course in self.courses:
+            print("  -", course.name)
+        print()
+
+class Course:
+    def __init__(self, name, number):
+        self.name = name
+        self.number = number
+
+# Create students
+student1 = Student("John", "Doe", 2000, 12345)
+student2 = Student("Jane", "Smith", 1999, 12346)
+student3 = Student("Bob", "Johnson", 2001, 12347)
+
+# Create courses
+course1 = Course("Mathematics", 101)
+course2 = Course("Physics", 102)
+course3 = Course("Chemistry", 103)
+
+# Enroll students
+student1.enroll(course1)
+student1.enroll(course2)
+student2.enroll(course2)
+student2.enroll(course3)
+student3.enroll(course1)
+student3.enroll(course3)
+
+# Display students
+student1.display()
+student2.display()
+student3.display()
+
+
+# Exercise 3: Square Measurement
+class Rectangle2:
+    def __init__(self, x, y, w, h):
+        self.x = x
+        self.y = y
+        self.w = w
+        self.h = h
+
+    def area(self):
+        return self.w * self.h
+    
+    def circumference(self):
+        return 2 * (self.w + self.h)
+
+class Square(Rectangle2):
+    def __init__(self, x, y, side):
+        Rectangle2.__init__(self, x, y, side, side)
+
+# Test
+square = Square(0, 0, 5)
+print("Square area:", square.area())
+print("Square circumference:", square.circumference())
+
+
+# Exercise 4: Extending Measurement
+class Shape:
+    def area(self):
+        return 0
+    
+    def circumference(self):
+        return 0
+
+class Rectangle3(Shape):
+    def __init__(self, x, y, w, h):
+        self.x = x
+        self.y = y
+        self.w = w
+        self.h = h
+
+    def area(self):
+        return self.w * self.h
+    
+    def circumference(self):
+        return 2 * (self.w + self.h)
+
+class Square2(Rectangle3):
+    def __init__(self, x, y, side):
+        Rectangle3.__init__(self, x, y, side, side)
+
+class Circle(Shape):
+    def __init__(self, x, y, radius):
+        self.x = x
+        self.y = y
+        self.radius = radius
+    
+    def area(self):
+        pi = 3.14159
+        return pi * self.radius * self.radius
+    
+    def circumference(self):
+        pi = 3.14159
+        return 2 * pi * self.radius
+
+# Test
+rectangle = Rectangle3(0, 0, 4, 6)
+square = Square2(0, 0, 5)
+circle = Circle(0, 0, 3)
+
+print("Rectangle area:", rectangle.area())
+print("Square area:", square.area())
+print("Circle area:", circle.area())
+print("Circle circumference:", circle.circumference())
