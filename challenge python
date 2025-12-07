@@ -1,0 +1,138 @@
+# Algorithm 1: Shift Array Elements
+# Pseudocode:
+# 1. Create empty result array
+# 2. Loop from end of array to beginning (reverse)
+# 3. Add each element to result array
+# 4. Return result array
+
+def shift_array(X):
+    result = []
+    i = len(X) - 1
+    while i >= 0:
+        result.append(X[i])
+        i = i - 1
+    return result
+
+print("Algorithm 1: Shift Array Elements")
+arr1 = [2, 1, 6, 4, -7]
+print("Input:", arr1)
+print("Output:", shift_array(arr1))
+print()
+
+
+# Algorithm 2: Remove Negative Numbers (Recursive)
+# Pseudocode:
+# 1. Base case: if array is empty, return empty array
+# 2. Check if first element is negative
+# 3. If negative, skip it and recurse on rest of array
+# 4. If positive, include it and recurse on rest of array
+# 5. Return result
+
+def remove_negatives(X):
+    if len(X) == 0:
+        return []
+    
+    if X[0] < 0:
+        return remove_negatives(X[1:])
+    else:
+        return [X[0]] + remove_negatives(X[1:])
+
+print("Algorithm 2: Remove Negative Numbers")
+arr2 = [1, -2, 4, 1]
+print("Input:", arr2)
+print("Output:", remove_negatives(arr2))
+print()
+
+
+# Algorithm 3: Find Longest Word
+# Pseudocode:
+# 1. Split string into words
+# 2. Set longest_word to empty string
+# 3. Loop through each word
+# 4. If word length > longest_word length
+# 5. Update longest_word
+# 6. Return longest_word
+
+def longest_word(text):
+    words = text.split()
+    longest = ""
+    
+    for word in words:
+        if len(word) > len(longest):
+            longest = word
+    
+    return longest
+
+print("Algorithm 3: Find Longest Word")
+sentence = "The quick brown fox jumps"
+print("Input:", sentence)
+print("Output:", longest_word(sentence))
+print()
+
+
+# Algorithm 4: Largest Number from Sub-arrays
+def largest_from_subarrays(arr):
+    result = []
+    
+    for subarray in arr:
+        largest = subarray[0]
+        for num in subarray:
+            if num > largest:
+                largest = num
+        result.append(largest)
+    
+    return result
+
+print("Algorithm 4: Largest Number from Sub-arrays")
+arrays = [[13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1], [4, 5, 1, 3]]
+print("Input:", arrays)
+print("Output:", largest_from_subarrays(arrays))
+print()
+
+
+# Algorithm 5: Title Case
+def title_case(text):
+    words = text.split()
+    result = []
+    
+    for word in words:
+        first_letter = word[0].upper()
+        rest = word[1:].lower()
+        capitalized = first_letter + rest
+        result.append(capitalized)
+    
+    return " ".join(result)
+
+print("Algorithm 5: Title Case")
+sentence2 = "i'm a little tea pot"
+print("Input:", sentence2)
+print("Output:", title_case(sentence2))
+```
+
+**Output:**
+```
+Algorithm 1: Shift Array Elements
+Input: [2, 1, 6, 4, -7]
+Output: [-7, 4, 6, 1, 2]
+
+Algorithm 2: Remove Negative Numbers
+Input: [1, -2, 4, 1]
+Output: [1, 4, 1]
+
+Algorithm 3: Find Longest Word
+Input: The quick brown fox jumps
+Output: quick
+
+Algorithm 4: Largest Number from Sub-arrays
+Input: [[13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1], [4, 5, 1, 3]]
+Output: [27, 39, 1001, 5]
+
+Algorithm 5: Title Case
+Input: i'm a little tea pot
+Output: I'm A Little Tea Pot
+
+
+
+
+
+  
