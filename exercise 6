@@ -1,0 +1,68 @@
+# Exercise 1: Building Dictionaries from a List
+wordlist = ["apple","durian","banana","durian","apple","cherry",
+"cherry","mango","apple","apple","cherry","durian","banana",
+"apple","apple","apple","apple","banana","apple"]
+
+word_count = {}
+
+for word in wordlist:
+    if word in word_count:
+        word_count[word] = word_count[word] + 1
+    else:
+        word_count[word] = 1
+
+for word in word_count:
+    print(word + ": " + str(word_count[word]))
+
+
+# Exercise 2: Building Dictionaries from a String
+text = "apple,durian,banana,durian,apple,cherry,cherry,mango," + \
+"apple,apple,cherry,durian,banana,apple,apple,apple," + \
+"apple,banana,apple"
+
+words = text.split(",")
+word_count2 = {}
+
+for word in words:
+    if word in word_count2:
+        word_count2[word] = word_count2[word] + 1
+    else:
+        word_count2[word] = 1
+
+for word in word_count2:
+    print(word + ": " + str(word_count2[word]))
+
+
+# Exercise 3: Translating
+english_dutch = { "last":"laatst", "week":"week", "the":"de",
+"royal":"koninklijk", "festival":"feest", "hall":"hal", "saw":
+"zaag", "first":"eerst", "performance":"optreden", "of":"van",
+"a":"een", "new":"nieuw", "symphony":"symphonie", "by":"bij",
+"one":"een", "world":"wereld", "leading":"leidend", "modern":
+"modern", "composer":"componist", "composers":"componisten",
+"two":"twee", "shed":"schuur", "sheds":"schuren" }
+
+sentence = "Last week The Royal Festival Hall saw the first \
+performance of a new symphony by one of the world's leading \
+modern composers, Arthur \"Two-Sheds\" Jackson."
+
+# Convert sentence to lowercase and split into words
+sentence_lower = sentence.lower()
+words_list = sentence_lower.split()
+
+translation = ""
+
+for word in words_list:
+    # Remove punctuation from word for lookup
+    clean_word = ""
+    for char in word:
+        if char.isalpha():
+            clean_word = clean_word + char
+    
+    # Translate or keep original
+    if clean_word in english_dutch:
+        translation = translation + english_dutch[clean_word] + " "
+    else:
+        translation = translation + clean_word + " "
+
+print(translation)
