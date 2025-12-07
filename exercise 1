@@ -1,0 +1,31 @@
+# 1. Create a variable age with your age and print it
+age = 25
+print(age)
+
+# 2. Store your name in a string variable and print "Hello, <your name>"
+name = "Ayoub"
+print("Hello, " + name)
+
+# 3. Make a list of 5 favorite fruits and print the second fruit
+fruits = ["apple", "banana", "orange", "mango", "strawberry"]
+print(fruits[1])
+
+# 4. Convert the string "123" into an integer and add 10 to it
+number_string = "123"
+number = int(number_string)
+result = number + 10
+print(result)
+
+# 5. Import the math module and print the square root of 16
+import math
+square_root = math.sqrt(16)
+print(square_root)
+```
+
+**Output:**
+```
+25
+Hello, Ayoub
+banana
+133
+4.0
